@@ -3,6 +3,7 @@ package com.curso.test;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
@@ -23,7 +24,7 @@ public class WebElementsTest {
 				//"c:\\drivers\\chromedriver.exe");
 		
 		driver = new ChromeDriver();
-				
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);		
 		driver.get("http://antoniotrindade.com.br/treinoautomacao/elementsweb.html");		
 	}
 
