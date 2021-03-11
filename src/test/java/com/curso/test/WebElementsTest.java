@@ -20,10 +20,8 @@ public class WebElementsTest {
 
 	@Before
 	public void setUp() throws Exception {
-		
 		System.setProperty("webdriver.chrome.driver",
 				"/home/antonio/dev/drivers/chromedriver");
-				//"c:\\drivers\\chromedriver.exe");
 		
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);		
