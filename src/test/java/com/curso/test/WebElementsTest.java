@@ -131,4 +131,32 @@ public class WebElementsTest {
 		assertEquals("Item 5", allSelected.get(0).getText());
 		assertEquals("Item 9", allSelected.get(1).getText());		
 	}
+	
+	@Test
+	public void testiFrames() throws InterruptedException {
+		
+		driver.switchTo().frame("iframe_b");
+		
+		WebElement btnAceitarCookies = driver.findElement(By.cssSelector("a.cc-btn.cc-ALLOW"));
+		btnAceitarCookies.click();
+		
+		WebElement txtSearch = driver.findElement(By.id("s"));	
+		txtSearch.sendKeys("Antonio");
+		assertEquals("Antonio", txtSearch.getAttribute("value"));
+
+		driver.switchTo().defaultContent();
+		
+		Thread.sleep(3000);
+		
+		driver.switchTo().frame("iframe_d");
+		
+		Thread.sleep(3000);
+		
+		WebElement menu = driver.findElement(By.id("dropdownButton"));
+		menu.click();
+		
+		WebElement txtSearchWeb = driver.findElement(By.name("search"));
+		txtSearchWeb.sendKeys("Antonio");
+		assertEquals("Antonio", txtSearchWeb.getAttribute("value"));
+	}
 }
