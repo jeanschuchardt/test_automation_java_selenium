@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -158,5 +159,15 @@ public class WebElementsTest {
 		WebElement txtSearchWeb = driver.findElement(By.name("search"));
 		txtSearchWeb.sendKeys("Antonio");
 		assertEquals("Antonio", txtSearchWeb.getAttribute("value"));
+	}
+	
+	@Test
+	public void testAlert() {
+		WebElement btnAlert = driver.findElement(By.name("alertbtn"));
+		btnAlert.click();
+		
+		Alert alert = driver.switchTo().alert();
+		assertEquals("Eu sou um alerta!", alert.getText());
+		alert.dismiss();
 	}
 }
