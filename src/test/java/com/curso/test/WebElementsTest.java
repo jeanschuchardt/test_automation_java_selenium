@@ -7,7 +7,11 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +19,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import com.curso.inter.NegativeInterface;
+import com.curso.inter.PositiveInterface;
+
+@FixMethodOrder(MethodSorters.DEFAULT)
 public class WebElementsTest {
 	public WebDriver driver; 
 
@@ -34,11 +42,13 @@ public class WebElementsTest {
 	}
 
 	@Test
+	@Category(NegativeInterface.class)
 	public void testValidaTitulo() {
 		assertEquals("Selenium WebDriver Test Page", driver.getTitle());	
 	}
 	
 	@Test
+	@Category(PositiveInterface.class)
 	public void testValidaNomeTextField() {
 		
 		WebElement txtNome = driver.findElement(By.name("txtbox1"));
@@ -52,6 +62,7 @@ public class WebElementsTest {
 	}
 	
 	@Test
+	@Category(NegativeInterface.class)
 	public void testValidaEnable() {
 		WebElement txtNome = driver.findElement(By.name("txtbox1"));
 		WebElement txtDisable = driver.findElement(By.name("txtbox2"));
@@ -61,6 +72,7 @@ public class WebElementsTest {
 	}
 	
 	@Test
+	@Category(NegativeInterface.class)
 	public void testValidaRadioButton() {
 		
 		List<WebElement> listRadios = driver.findElements(By.name("radioGroup1"));
@@ -76,6 +88,7 @@ public class WebElementsTest {
 	}
 	
 	@Test
+	@Category(NegativeInterface.class)
 	public void testValidaCheckBox() throws InterruptedException {
 		List<WebElement> listCheckBox = driver.findElements(By.name("chkbox"));
 		
@@ -92,6 +105,7 @@ public class WebElementsTest {
 	}
 	
 	@Test
+	@Category(PositiveInterface.class)
 	public void testDropDownSingle() throws InterruptedException {
 		WebElement dropDownSingle = driver.findElement(By.name("dropdownlist"));
 		
@@ -105,6 +119,7 @@ public class WebElementsTest {
 	}
 	
 	@Test
+	@Category(PositiveInterface.class)
 	public void testDropDownMulti() {
 		WebElement dropDownMulti = driver.findElement(By.name("multiselectdropdown"));
 		
@@ -131,7 +146,9 @@ public class WebElementsTest {
 		assertEquals("Item 9", allSelected.get(1).getText());		
 	}
 	
+	@Ignore("Bug dectado e cadastrado no Jira BUG-123456")
 	@Test
+	@Category(PositiveInterface.class)
 	public void testiFrames() throws InterruptedException {
 		
 		driver.switchTo().frame("iframe_b");
@@ -160,6 +177,7 @@ public class WebElementsTest {
 	}
 	
 	@Test
+	@Category(PositiveInterface.class)
 	public void testAlert() {
 		WebElement btnAlert = driver.findElement(By.name("alertbtn"));
 		btnAlert.click();

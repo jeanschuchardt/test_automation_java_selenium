@@ -7,10 +7,14 @@ import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.curso.inter.NegativeInterface;
+import com.curso.inter.PositiveInterface;
 
 public class CPFCNPJTest {
 	public WebDriver driver;
@@ -30,6 +34,7 @@ public class CPFCNPJTest {
 	}
 
 	@Test
+	@Category(PositiveInterface.class)
 	public void testValidaCPFComMascara() throws InterruptedException {
 		WebElement checkBoxPonto = driver.findElement(By.id("cbPontos"));
 		checkBoxPonto.click();
@@ -47,6 +52,7 @@ public class CPFCNPJTest {
 	}
 	
 	@Test
+	@Category(NegativeInterface.class)
 	public void testValidaCPFSemMarcara() {
 		WebElement btnGerar = driver.findElement(By.id("btn-gerar-cpf"));
 		btnGerar.click();
